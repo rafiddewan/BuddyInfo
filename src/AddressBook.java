@@ -1,32 +1,27 @@
+import javax.swing.*;
 import java.util.ArrayList;
 
-public class AddressBook 
+public class AddressBook extends DefaultListModel
 {
-
-	private ArrayList<BuddyInfo> buddys;
 
 	public AddressBook() 
 	{
-		this.buddys = new ArrayList<BuddyInfo>();
+		super();
 	}
 	
-	public boolean addBuddy(BuddyInfo thisBuddy) 
+	public void addBuddy(BuddyInfo thisBuddy)
 	{
-		if(thisBuddy != null) {
-			buddys.add(thisBuddy);
+		try{
+			super.addElement(thisBuddy);
 		}
-		return false;
+		catch (NullPointerException e){
+			System.out.println("Cannot pass null value");
+		};
 	}
 	
-	public boolean removeBuddy(int index) 
+	public void removeBuddy(int index)
 	{
-		if(index >= 0 && index < buddys.size())
-		{
-			buddys.remove(index);
-			return true;
-		}
-		return false;
-		
+		if(index >= 0 && index < super.size()) super.remove(index);
 	}
 	
 	public static void main(String[] args) {

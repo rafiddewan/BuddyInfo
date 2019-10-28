@@ -55,4 +55,13 @@ public class BuddyInfo
 		BuddyInfo buddy = (BuddyInfo) obj;
 		return buddy.getName() == this.getName() && buddy.getPhoneNum() == this.getPhoneNum() && buddy.getAddress() == this.getAddress();
 	}
+
+	@Override
+	public String toString() {
+		return "BuddyInfo{" +
+				"name='" + name + '\'' +
+				", phoneNum='" + phoneNum + '\'' +
+				", address='" + address + '\'' +
+				'}';
+	}
 }
