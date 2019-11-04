@@ -31,4 +31,12 @@ public class AddressBook extends DefaultListModel
 		addressBook.addBuddy(buddy);
 		addressBook.removeBuddy(0);
 	}
+	
+	public int size() {
+		return super.getSize();
+	}
+	
+	public void clear() {
+		super.clear();
+	}
 }

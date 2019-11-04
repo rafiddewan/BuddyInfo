@@ -10,6 +10,10 @@ public class BuddyInfo
 		this.phoneNum = phoneNum;
 		this.address = address;
 	}
+	
+	public BuddyInfo(BuddyInfo buddyInfo) {
+		this(buddyInfo.getName(), buddyInfo.getPhoneNum(), buddyInfo.getAddress());
+	}
 
 
 	public String getName() 
