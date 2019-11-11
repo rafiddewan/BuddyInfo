@@ -1,4 +1,9 @@
 import javax.swing.*;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class AddressBook extends DefaultListModel
@@ -38,5 +43,19 @@ public class AddressBook extends DefaultListModel
 	
 	public void clear() {
 		super.clear();
+	}
+	
+	public void save(String filename) {
+		try {
+			FileOutputStream ostream = new FileOutputStream(filename);
+		    ObjectOutputStream p = new ObjectOutputStream(ostream); 
+		    
+		    for(int i = 0 ; i < super.getSize(); i++) {
+		    	BuddyInfo buddy = (BuddyInfo) super.get(i);
+		    	p.writeChars(buddy.toString() + "\n");
+		    }
+		}
+		catch(FileNotFoundException e) { e.printStackTrace(); }		
+		catch(IOException e) {e.printStackTrace(); }
 	}
 }
