@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class BuddyInfo 
+public class BuddyInfo implements Serializable
 {
 
 	private String name, phoneNum, address; 
@@ -60,12 +61,24 @@ public class BuddyInfo
 		return buddy.getName() == this.getName() && buddy.getPhoneNum() == this.getPhoneNum() && buddy.getAddress() == this.getAddress();
 	}
 
+	public String toXML() {
+		String s = "<BuddyInfo>\n";
+		s += "<name>" + this.name + "</name> \n";
+		s += "<address>" + this.address + "</address> \n";
+		s += "<phone>" + this.phoneNum + "</phone>\n";
+		s += "</BuddyInfo>";
+		return s;
+	}
+
+
+	public static BuddyInfo importBuddy(String info) {
+		String[] s = info.split("#");
+		BuddyInfo b = new BuddyInfo(s[0], s[1], s[2]);
+		return b;
+	}
+
 	@Override
 	public String toString() {
-		return "BuddyInfo{" +
-				"name='" + name + '\'' +
-				", phoneNum='" + phoneNum + '\'' +
-				", address='" + address + '\'' +
-				'}';
+		return this.name + "#" + this.address + "#" + this.phoneNum;
 	}
 }
